@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/gwent-mg/static/css/main.b8cf31d3.chunk.css",
-    "main.js": "/gwent-mg/static/js/main.006cbf41.chunk.js",
-    "main.js.map": "/gwent-mg/static/js/main.006cbf41.chunk.js.map",
+    "main.js": "/gwent-mg/static/js/main.9dae0e15.chunk.js",
+    "main.js.map": "/gwent-mg/static/js/main.9dae0e15.chunk.js.map",
     "runtime-main.js": "/gwent-mg/static/js/runtime-main.1f1fd84f.js",
     "runtime-main.js.map": "/gwent-mg/static/js/runtime-main.1f1fd84f.js.map",
     "static/js/2.4d302823.chunk.js": "/gwent-mg/static/js/2.4d302823.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.1f1fd84f.js",
     "static/js/2.4d302823.chunk.js",
     "static/css/main.b8cf31d3.chunk.css",
-    "static/js/main.006cbf41.chunk.js"
+    "static/js/main.9dae0e15.chunk.js"
   ]
 }
