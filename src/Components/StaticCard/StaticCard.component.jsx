@@ -3,13 +3,14 @@ import "./StaticCard.css";
 
 function StaticCard(props) {
   const cardback = props.cardback;
+  const style = props.styles;
   return (
     <img
       src={`img/${cardback}`}
       alt={cardback}
-      width="128"
-      height="190"
-      className="back-face"
+      width="128px"
+      height="190px"
+      className={style ? style : "back-face"}
     ></img>
   );
 }

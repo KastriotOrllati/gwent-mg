@@ -11,69 +11,13 @@ body {
   font-family: Helvetica;
 }
 
-.memory-game {
-  width: 800px;
-  height: 100vh;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.memory-card {
-  width: calc(25% - 10px);
-  height: calc(33.333% - 10px);
-  margin: 5px;
-  position: relative;
-  transform: scale(1);
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  z-index: 10;
-}
-
-.memory-card:active {
-  transform: scale(0.97);
-  transition: transform 0.2s;
-}
-
-.memory-card.flip {
-  transform: rotateY(180deg);
-}
-
-.front-face,
-.back-face {
-  width: 100%;
+.App {
+  background: url("./random/gwentdeckbuilder.png") center no-repeat;
   height: 100%;
-  padding: 20px;
-  position: absolute;
-  border-radius: 5px;
-  background: #ffe100;
-  backface-visibility: hidden;
 }
 
-.front-face {
-  transform: rotateY(180deg);
-}
-
-.memory-game {
-  width: 800px;
-  height: 100vh;
+.cardbacks {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-content: center;
-  justify-content: center;
-}
 
-.memory-card {
-  width: calc(25% - 10px);
-  height: calc(31% - 10px);
-  margin: 5px;
-  position: relative;
-  transform: scale(1);
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  z-index: 10;
-  cursor: pointer;
+  justify-content: center;
 }

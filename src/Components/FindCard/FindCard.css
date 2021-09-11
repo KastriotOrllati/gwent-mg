@@ -1,11 +1,10 @@
-.front-face,
-.back-face {
+.front-face {
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 5px;
   position: absolute;
   border-radius: 5px;
-  background: #ffe100;
+
   backface-visibility: hidden;
 }
 
