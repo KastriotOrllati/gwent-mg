@@ -1,0 +1,12 @@
+.cardBody {
+  width: 134px;
+  height: 192px;
+  background-image: url("../../img/border.png");
+  background-repeat: no-repeat;
+  margin: 20px;
+}
+
+/* .artHolder {
+  width: 130px;
+  height: 190px;
+} */
