@@ -1,21 +1,22 @@
-import React, { useEffect, useLayoutEffect } from "react";
-import { useState } from "react/cjs/react.development";
+import React, { useLayoutEffect, useState } from "react";
 
 import FindCard from "../FindCard/FindCard.component";
 import StaticCard from "../StaticCard/StaticCard.component";
 import "./MemoryBoard.css";
 
 function MemoryBoard(props) {
-  const [startGame, setStartGame] = useState({});
-  //const [score, setScore] = useState(0);
-  // const [flip, setFlip] = useState(false);
+  const [startGame, setStartGame] = useState([]);
 
   function getAllCards() {
     const cards = { ...localStorage };
 
-    setStartGame(cards);
-  }
+    const array = Object.values(cards);
 
+    setStartGame(array);
+  }
+  useLayoutEffect(() => {
+    getAllCards();
+  }, []);
   let lockBoard = false;
   let firstCard, secondCard;
   let hasFlippedCard = false;
@@ -52,16 +53,13 @@ function MemoryBoard(props) {
     // console.log(cardsTotal);
     cardsTotal.forEach((card) => card.addEventListener("click", flipCard));
   }, 3000);
-  useLayoutEffect(() => {
-    getAllCards();
-  }, []);
 
   function checkForMatch() {
     let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
 
     isMatch ? disableCards() : unflipCards();
 
-    if (isMatch == true) return true;
+    if (isMatch === true) return true;
     else return false;
   }
 
@@ -96,26 +94,27 @@ function MemoryBoard(props) {
     let random = Math.floor(Math.random() * 2 + 2);
     return random;
   }
+
   return (
     <div className="memory-game">
-      {Object.keys(startGame).map((key, i) => (
-        <React.Fragment key={i}>
+      {startGame?.map((card) => (
+        <React.Fragment key={card}>
           <div
             className={"memory-card order-" + randomNr()}
-            data-framework={startGame[key]}
+            data-framework={card}
           >
-            <FindCard art={startGame[key]} keyz={i} key={i} />
+            <FindCard art={card} key={card} />
             <StaticCard cardback={"cardback.png"} />
           </div>
         </React.Fragment>
       ))}
-      {Object.keys(startGame).map((key, i) => (
-        <React.Fragment key={i}>
+      {startGame.map((card) => (
+        <React.Fragment key={card}>
           <div
             className={"memory-card order-" + randomNr2()}
-            data-framework={startGame[key]}
+            data-framework={card}
           >
-            <FindCard art={startGame[key]} keyz={i} key={i} />
+            <FindCard art={card} key={card} />
             <StaticCard cardback={"cardback.png"} />
           </div>
         </React.Fragment>
