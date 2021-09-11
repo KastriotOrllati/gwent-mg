@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/gwent-mg/static/css/main.b8cf31d3.chunk.css",
-    "main.js": "/gwent-mg/static/js/main.9dae0e15.chunk.js",
-    "main.js.map": "/gwent-mg/static/js/main.9dae0e15.chunk.js.map",
-    "runtime-main.js": "/gwent-mg/static/js/runtime-main.1f1fd84f.js",
-    "runtime-main.js.map": "/gwent-mg/static/js/runtime-main.1f1fd84f.js.map",
-    "static/js/2.4d302823.chunk.js": "/gwent-mg/static/js/2.4d302823.chunk.js",
-    "static/js/2.4d302823.chunk.js.map": "/gwent-mg/static/js/2.4d302823.chunk.js.map",
-    "static/js/3.b93a58ac.chunk.js": "/gwent-mg/static/js/3.b93a58ac.chunk.js",
-    "static/js/3.b93a58ac.chunk.js.map": "/gwent-mg/static/js/3.b93a58ac.chunk.js.map",
+    "main.js": "/gwent-mg/static/js/main.d172d914.chunk.js",
+    "main.js.map": "/gwent-mg/static/js/main.d172d914.chunk.js.map",
+    "runtime-main.js": "/gwent-mg/static/js/runtime-main.e7bcb4d9.js",
+    "runtime-main.js.map": "/gwent-mg/static/js/runtime-main.e7bcb4d9.js.map",
+    "static/js/2.7fc0cef5.chunk.js": "/gwent-mg/static/js/2.7fc0cef5.chunk.js",
+    "static/js/2.7fc0cef5.chunk.js.map": "/gwent-mg/static/js/2.7fc0cef5.chunk.js.map",
+    "static/js/3.a91ac50a.chunk.js": "/gwent-mg/static/js/3.a91ac50a.chunk.js",
+    "static/js/3.a91ac50a.chunk.js.map": "/gwent-mg/static/js/3.a91ac50a.chunk.js.map",
     "index.html": "/gwent-mg/index.html",
     "static/css/main.b8cf31d3.chunk.css.map": "/gwent-mg/static/css/main.b8cf31d3.chunk.css.map",
-    "static/js/2.4d302823.chunk.js.LICENSE.txt": "/gwent-mg/static/js/2.4d302823.chunk.js.LICENSE.txt"
+    "static/js/2.7fc0cef5.chunk.js.LICENSE.txt": "/gwent-mg/static/js/2.7fc0cef5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.1f1fd84f.js",
-    "static/js/2.4d302823.chunk.js",
+    "static/js/runtime-main.e7bcb4d9.js",
+    "static/js/2.7fc0cef5.chunk.js",
     "static/css/main.b8cf31d3.chunk.css",
-    "static/js/main.9dae0e15.chunk.js"
+    "static/js/main.d172d914.chunk.js"
   ]
 }
