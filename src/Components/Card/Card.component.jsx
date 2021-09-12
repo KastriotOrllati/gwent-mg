@@ -2,21 +2,22 @@ import React from "react";
 import "./Card.css";
 
 function Card(props) {
-  const product = props.product;
+  const card = props.card;
   const key = props.keyz;
+  console.log("cardComp", card);
   const AddCard = (e) => {
     e.preventDefault();
-    localStorage.setItem(key, product);
+    localStorage.setItem(key, card);
   };
   const RemoveCard = (e) => {
     e.preventDefault();
-    localStorage.removeItem(key, product);
+    localStorage.removeItem(key, card);
   };
   return (
     <div className="cardBody">
       <div className="artHolder">
         <video
-          src={`img/video/${product}`}
+          src={`img/video/${card}`}
           preload="true"
           autoPlay
           loop
