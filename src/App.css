@@ -21,14 +21,9 @@ body {
 
   justify-content: center;
 }
-
+/* 
 button {
-  color: inherit;
-  background-color: inherit;
-  border-color: inherit;
-  margin: 0 20px;
-  color: white;
-}
+} */
 
 button:hover {
   cursor: pointer;

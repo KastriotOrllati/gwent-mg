@@ -5,12 +5,16 @@ import StaticCard from "../StaticCard/StaticCard.component";
 import "./MemoryBoard.css";
 
 function MemoryBoard(props) {
+  let cardback = props.cardback;
+
   const [startGame, setStartGame] = useState([]);
+  const [arrayLength, setArrayLength] = useState(0);
 
   function getAllCards() {
     const cards = { ...localStorage };
 
     const array = Object.values(cards);
+    setArrayLength(array.length);
 
     setStartGame(array);
   }
@@ -44,9 +48,11 @@ function MemoryBoard(props) {
       // setScore(score + 1);
       count++;
     }
-    console.log("countINSIDE", count);
+    if (count === arrayLength) {
+      console.log("you won");
+    }
   }
-  console.log("countOutside", count);
+
   setTimeout(() => {
     const cardsTotal = document.querySelectorAll(".memory-card");
 
@@ -94,6 +100,7 @@ function MemoryBoard(props) {
     let random = Math.floor(Math.random() * 2 + 2);
     return random;
   }
+  console.log("try", startGame);
 
   return (
     <div className="memory-game">
@@ -104,7 +111,7 @@ function MemoryBoard(props) {
             data-framework={card}
           >
             <FindCard art={card} key={card} />
-            <StaticCard cardback={"cardback.png"} />
+            <StaticCard cardback={cardback} />
           </div>
         </React.Fragment>
       ))}
@@ -115,7 +122,7 @@ function MemoryBoard(props) {
             data-framework={card}
           >
             <FindCard art={card} key={card} />
-            <StaticCard cardback={"cardback.png"} />
+            <StaticCard cardback={cardback} />
           </div>
         </React.Fragment>
       ))}

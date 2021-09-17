@@ -1,3 +1,31 @@
 .cardSelector {
   display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.poolCards {
+  display: flex;
+  flex-flow: column wrap;
+  color: white;
+
+  align-items: center;
+}
+.allCards {
+  display: flex;
+  flex-flow: row wrap;
+}
+.myCards {
+  margin-top: 50px;
+  display: flex;
+  flex-flow: column wrap;
+  color: white;
+
+  align-items: center;
+}
+
+.myCardsSelected {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: #7c492e;
 }

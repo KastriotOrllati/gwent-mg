@@ -4,15 +4,10 @@ import "./Card.css";
 function Card(props) {
   const card = props.card;
   const key = props.keyz;
-  console.log("cardComp", card);
-  const AddCard = (e) => {
-    e.preventDefault();
-    localStorage.setItem(key, card);
-  };
-  const RemoveCard = (e) => {
-    e.preventDefault();
-    localStorage.removeItem(key, card);
-  };
+  const removeCard = props.removeFunk;
+  const addCard = props.addFunk;
+  const hide = props.hide;
+
   return (
     <div className="cardBody">
       <div className="artHolder">
@@ -22,12 +17,14 @@ function Card(props) {
           autoPlay
           loop
           muted
-          width="128"
-          height="190"
+          width="126"
+          height="189"
         ></video>
       </div>
-      <button onClick={AddCard}>Add to play</button>
-      <button onClick={RemoveCard}>Remove </button>
+      <div className={`showButtons` + hide}>
+        <button onClick={() => addCard(key, card)}>Add to play</button>
+        <button onClick={() => removeCard(key, card)}>Remove </button>
+      </div>
     </div>
   );
 }

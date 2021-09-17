@@ -11,12 +11,12 @@ import StaticCard from "./Components/StaticCard/StaticCard.component";
 function App() {
   const [cardback, setCardback] = useState("cardback.png");
   const [active, setActive] = useState("homepage");
-  localStorage.setItem("1", "ballista.mp4");
-  localStorage.setItem("2", "executioner.mp4");
-  localStorage.setItem("3", "chironex.mp4");
-  localStorage.setItem("4", "greatsword.mp4");
-  localStorage.setItem("5", "ihuarraquax.mp4");
-  localStorage.setItem("6", "regis.mp4");
+  // localStorage.setItem("1", "ballista.mp4");
+  // localStorage.setItem("2", "executioner.mp4");
+  // localStorage.setItem("3", "chironex.mp4");
+  // localStorage.setItem("4", "greatsword.mp4");
+  // localStorage.setItem("5", "ihuarraquax.mp4");
+  // localStorage.setItem("6", "regis.mp4");
 
   console.log(cardback);
   return (
@@ -33,15 +33,15 @@ function App() {
             <StaticCard cardback={"cardback.png"} styles={"newStyle"} />
           </button>
           <button onClick={(e) => setCardback("cardback1.png")}>
-            <StaticCard cardback={"cardback.png"} styles={"newStyle"} />
+            <StaticCard cardback={"cardback1.png"} styles={"newStyle"} />
           </button>
 
           <button onClick={(e) => setCardback("cardback2.png")}>
-            <StaticCard cardback={"cardback.png"} styles={"newStyle"} />
+            <StaticCard cardback={"cardback2.png"} styles={"newStyle"} />
           </button>
         </div>
       )}
-      {active === "playgame" && <MemoryBoard />}
+      {active === "playgame" && <MemoryBoard cardback={cardback} />}
       {active === "selectCards" && <SelectCards />}
     </div>
   );

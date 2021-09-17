@@ -1,12 +1,22 @@
 .cardBody {
-  width: 134px;
+  width: 135px;
   height: 192px;
   background-image: url("../../random/border.png");
   background-repeat: no-repeat;
-  margin: 20px;
+  margin: 20px 10px;
 }
 
+video {
+  margin-left: 3px;
+}
 /* .artHolder {
   width: 130px;
   height: 190px;
 } */
+
+/* .showButtons {
+} */
+
+.showButtonshide {
+  display: none;
+}
