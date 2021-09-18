@@ -21,24 +21,68 @@ function App() {
   console.log(cardback);
   return (
     <div className="App">
-      <h1>Hello</h1>
       <nav>
-        <button onClick={() => setActive("homepage")}>Homepage</button>
-        <button onClick={() => setActive("selectCards")}>Select Cards</button>
-        <button onClick={() => setActive("playgame")}>Play the game</button>
+        <div className="navButtons">
+          <div className="button-container">
+            <div onClick={() => setActive("homepage")} className="buttonText">
+              Homepage
+            </div>
+            <img
+              src="https://trendygwentleman.com/static/img/borders/38057.png"
+              alt="border"
+              className="imgName"
+            />
+          </div>
+        </div>
+        <div className="navButtons">
+          <div className="button-container">
+            <div
+              onClick={() => setActive("selectCards")}
+              className="buttonText"
+            >
+              Select Cards
+            </div>
+            <img
+              src="https://trendygwentleman.com/static/img/borders/38057.png"
+              alt="border"
+              className="imgName"
+            />
+          </div>
+        </div>
+        <div className="navButtons">
+          <div className="button-container">
+            <div onClick={() => setActive("playgame")} className="buttonText">
+              Play the game
+            </div>
+            <img
+              src="https://trendygwentleman.com/static/img/borders/38057.png"
+              alt="border"
+              className="imgName"
+            />
+          </div>
+        </div>
       </nav>
       {active === "homepage" && (
         <div className="cardbacks">
-          <button onClick={(e) => setCardback("cardback.png")}>
+          <div
+            className="hoverDiv"
+            onClick={(e) => setCardback("cardback.png")}
+          >
             <StaticCard cardback={"cardback.png"} styles={"newStyle"} />
-          </button>
-          <button onClick={(e) => setCardback("cardback1.png")}>
+          </div>
+          <div
+            className="hoverDiv"
+            onClick={(e) => setCardback("cardback1.png")}
+          >
             <StaticCard cardback={"cardback1.png"} styles={"newStyle"} />
-          </button>
+          </div>
 
-          <button onClick={(e) => setCardback("cardback2.png")}>
+          <div
+            className="hoverDiv"
+            onClick={(e) => setCardback("cardback2.png")}
+          >
             <StaticCard cardback={"cardback2.png"} styles={"newStyle"} />
-          </button>
+          </div>
         </div>
       )}
       {active === "playgame" && <MemoryBoard cardback={cardback} />}

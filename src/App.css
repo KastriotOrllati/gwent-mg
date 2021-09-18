@@ -13,7 +13,8 @@ body {
 
 .App {
   background: url("./random/gwentdeckbuilder.png") center no-repeat;
-  height: 120vh;
+  height: 120vh auto;
+  min-height: 100vh;
 }
 
 .cardbacks {
@@ -31,4 +32,48 @@ button:hover {
 
 .cardbackSelectedtrue {
   background-color: gray;
+}
+
+nav {
+  display: flex;
+  flex-flow: row wrap;
+
+  width: 100%;
+
+  justify-content: space-evenly;
+  height: 200px;
+  margin-bottom: 50px;
+}
+
+.button-container {
+  position: relative;
+  text-align: center;
+  padding: 0;
+
+  overflow: hidden;
+}
+
+.buttonText {
+  vertical-align: middle;
+  padding: 5%;
+  color: #ffffff;
+  position: absolute;
+  font-size: 1.125em;
+  font-weight: 700;
+  top: 40%;
+  left: 29%;
+
+  width: 40%;
+  /* display: inline-block; */
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.buttonText:hover {
+  background-color: #7c492e;
+  color: black;
+}
+.hoverDiv {
+  cursor: pointer;
 }

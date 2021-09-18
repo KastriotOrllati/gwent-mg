@@ -8,25 +8,58 @@ function MemoryBoard(props) {
   let cardback = props.cardback;
 
   const [startGame, setStartGame] = useState([]);
-  const [arrayLength, setArrayLength] = useState(0);
+  // const [arrayLength, setArrayLength] = useState(0);
+  let [score, setScore] = useState(0);
+  const [randomNr, setRandomNr] = useState([]);
 
   function getAllCards() {
     const cards = { ...localStorage };
 
     const array = Object.values(cards);
-    setArrayLength(array.length);
+
+    // const random = Array.from({ length: array.length }, () =>
+    //   Math.floor(Math.random() * array.length)
+    // );
+
+    // console.log("Random", random);
+
+    // function randomNr() {
+    //   let random = Math.floor(Math.random() * 4);
+    //   return random;
+    // }
+    // function randomNr2() {
+    //   let random = Math.floor(Math.random() * 2 + 2);
+    //   return random;
+    // }
+    // setArrayLength(array.length);
 
     setStartGame(array);
   }
+  // console.log("arrayrandom", randomNr);
   useLayoutEffect(() => {
+    //  console.log("this is rendering");
+
     getAllCards();
+    // const random = [...Array(startGame.length)].map(
+    //   (e) => ~~(Math.random() * startGame.length)
+    // );
+
+    const random = Array.from({ length: 6 }, () =>
+      Math.floor(Math.random() * 6)
+    );
+
+    setRandomNr(random);
   }, []);
+  console.log("randomarray", randomNr);
+
   let lockBoard = false;
   let firstCard, secondCard;
   let hasFlippedCard = false;
-  let count = 0;
+  // var count = 0;
 
   function flipCard() {
+    console.log("rerender flipcardfunk");
+
     if (lockBoard) return;
     if (this === firstCard) return;
 
@@ -40,33 +73,34 @@ function MemoryBoard(props) {
 
     secondCard = this;
 
+    checkForMatch();
     // if (checkForMatch()) {
     //   count++;
     // }
-    if (checkForMatch()) {
-      console.log("checkingformatch");
-      // setScore(score + 1);
-      count++;
-    }
-    if (count === arrayLength) {
-      console.log("you won");
-    }
+    // if (checkForMatch()) {
+    // }
+    // if (score === startGame.length) {
+    // }
   }
-
+  // console.log("gjatesia", startGame.length);
   setTimeout(() => {
     const cardsTotal = document.querySelectorAll(".memory-card");
 
     // console.log(cardsTotal);
     cardsTotal.forEach((card) => card.addEventListener("click", flipCard));
-  }, 3000);
+  }, 1000);
 
   function checkForMatch() {
     let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
 
-    isMatch ? disableCards() : unflipCards();
+    // isMatch ? disableCards() : unflipCards();
+    if (isMatch === true) {
+      disableCards();
+      setScore(score + 1);
+    } else unflipCards();
 
-    if (isMatch === true) return true;
-    else return false;
+    // if (isMatch === true) return true;
+    // else return false;
   }
 
   function disableCards() {
@@ -85,47 +119,51 @@ function MemoryBoard(props) {
       firstCard.classList.remove("flip");
       secondCard.classList.remove("flip");
       resetBoard();
-    }, 1500);
+    }, 1000);
   }
   function resetBoard() {
     [hasFlippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
   }
 
-  function randomNr() {
-    let random = Math.floor(Math.random() * 4);
-    return random;
-  }
-  function randomNr2() {
-    let random = Math.floor(Math.random() * 2 + 2);
-    return random;
-  }
-  console.log("try", startGame);
-
   return (
-    <div className="memory-game">
-      {startGame?.map((card) => (
-        <React.Fragment key={card}>
-          <div
-            className={"memory-card order-" + randomNr()}
-            data-framework={card}
-          >
-            <FindCard art={card} key={card} />
-            <StaticCard cardback={cardback} />
-          </div>
-        </React.Fragment>
-      ))}
-      {startGame.map((card) => (
-        <React.Fragment key={card}>
-          <div
-            className={"memory-card order-" + randomNr2()}
-            data-framework={card}
-          >
-            <FindCard art={card} key={card} />
-            <StaticCard cardback={cardback} />
-          </div>
-        </React.Fragment>
-      ))}
+    <div className="memoryBoard">
+      <div id="scoreHolder">
+        Your Score: {score}
+        <div onClick={() => window.location.reload()}>&#128260;</div>
+      </div>
+      {startGame.length === 0 ? (
+        <div className="hint">Add some cards first!</div>
+      ) : (
+        <div className="memory-game">
+          {startGame?.map((card) => (
+            <React.Fragment key={card}>
+              <div
+                className={
+                  "memory-card order-" + randomNr[startGame.indexOf(card)]
+                }
+                data-framework={card}
+              >
+                <FindCard art={card} key={card} />
+                <StaticCard cardback={cardback} />
+              </div>
+            </React.Fragment>
+          ))}
+          {startGame.map((card) => (
+            <React.Fragment key={card}>
+              <div
+                className={
+                  "memory-card order-" + randomNr[startGame.indexOf(card) / 2]
+                }
+                data-framework={card}
+              >
+                <FindCard art={card} key={card} />
+                <StaticCard cardback={cardback} />
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

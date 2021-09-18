@@ -3,7 +3,7 @@ import "./FindCard.css";
 
 function FindCard(props) {
   const art = props.art;
-  console.log("art", art);
+  // console.log("art", art);
   return (
     <video
       className="front-face"

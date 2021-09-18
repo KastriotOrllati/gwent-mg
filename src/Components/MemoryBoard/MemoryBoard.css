@@ -1,3 +1,7 @@
+.memoryBoard {
+  display: flex;
+}
+
 .memory-game {
   width: 800px;
   height: 100vh;
@@ -5,7 +9,10 @@
   display: flex;
   flex-wrap: wrap;
 }
-
+.hint {
+  color: white;
+  font-size: 70px;
+}
 .memory-card {
   width: calc(25% - 10px);
   height: calc(33.333% - 10px);
@@ -17,6 +24,11 @@
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   z-index: 10;
   cursor: pointer;
+}
+.scoreHolder {
+  height: 150px;
+  width: 150px;
+  background-color: red;
 }
 
 .memory-card:active {
