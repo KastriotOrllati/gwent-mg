@@ -1,5 +1,6 @@
 .memoryBoard {
   display: flex;
+  margin-top: 50px;
 }
 
 .memory-game {
@@ -25,10 +26,30 @@
   z-index: 10;
   cursor: pointer;
 }
-.scoreHolder {
+#scoreHolder {
   height: 150px;
   width: 150px;
-  background-color: red;
+  background-color: #7c492e;
+  color: white;
+  display: flex;
+  flex-flow: column wrap;
+  font-size: 23px;
+}
+
+.resetButton {
+  background-color: inherit;
+  margin-top: 20px;
+  border: none;
+  /* height: 60px;
+  width: 60px; */
+  font-size: 15px;
+  color: white;
+}
+.resetButton:hover {
+  cursor: pointer;
+}
+.winning {
+  margin-top: 20px;
 }
 
 .memory-card:active {

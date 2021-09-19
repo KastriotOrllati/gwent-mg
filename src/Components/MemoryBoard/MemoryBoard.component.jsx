@@ -6,43 +6,23 @@ import "./MemoryBoard.css";
 
 function MemoryBoard(props) {
   let cardback = props.cardback;
+  let refresh = props.refreshFunk;
 
   const [startGame, setStartGame] = useState([]);
-  // const [arrayLength, setArrayLength] = useState(0);
   let [score, setScore] = useState(0);
   const [randomNr, setRandomNr] = useState([]);
+  const [victory, setVictory] = useState(false);
 
   function getAllCards() {
     const cards = { ...localStorage };
 
     const array = Object.values(cards);
 
-    // const random = Array.from({ length: array.length }, () =>
-    //   Math.floor(Math.random() * array.length)
-    // );
-
-    // console.log("Random", random);
-
-    // function randomNr() {
-    //   let random = Math.floor(Math.random() * 4);
-    //   return random;
-    // }
-    // function randomNr2() {
-    //   let random = Math.floor(Math.random() * 2 + 2);
-    //   return random;
-    // }
-    // setArrayLength(array.length);
-
     setStartGame(array);
   }
-  // console.log("arrayrandom", randomNr);
-  useLayoutEffect(() => {
-    //  console.log("this is rendering");
 
+  useLayoutEffect(() => {
     getAllCards();
-    // const random = [...Array(startGame.length)].map(
-    //   (e) => ~~(Math.random() * startGame.length)
-    // );
 
     const random = Array.from({ length: 6 }, () =>
       Math.floor(Math.random() * 6)
@@ -50,7 +30,6 @@ function MemoryBoard(props) {
 
     setRandomNr(random);
   }, []);
-  console.log("randomarray", randomNr);
 
   let lockBoard = false;
   let firstCard, secondCard;
@@ -58,8 +37,6 @@ function MemoryBoard(props) {
   // var count = 0;
 
   function flipCard() {
-    console.log("rerender flipcardfunk");
-
     if (lockBoard) return;
     if (this === firstCard) return;
 
@@ -74,33 +51,32 @@ function MemoryBoard(props) {
     secondCard = this;
 
     checkForMatch();
-    // if (checkForMatch()) {
-    //   count++;
-    // }
-    // if (checkForMatch()) {
-    // }
-    // if (score === startGame.length) {
-    // }
   }
-  // console.log("gjatesia", startGame.length);
+
   setTimeout(() => {
     const cardsTotal = document.querySelectorAll(".memory-card");
 
-    // console.log(cardsTotal);
     cardsTotal.forEach((card) => card.addEventListener("click", flipCard));
   }, 1000);
 
   function checkForMatch() {
     let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
 
-    // isMatch ? disableCards() : unflipCards();
     if (isMatch === true) {
       disableCards();
       setScore(score + 1);
-    } else unflipCards();
+      let match = new Audio("audios/match.mp3");
+      match.volume = 0.1;
+      match.play();
 
-    // if (isMatch === true) return true;
-    // else return false;
+      if (score + 1 === startGame.length) {
+        console.log("you won!");
+        const victory = new Audio("audios/victory.mp3");
+        victory.volume = 0.2;
+        victory.play();
+        setVictory(true);
+      }
+    } else unflipCards();
   }
 
   function disableCards() {
@@ -127,10 +103,13 @@ function MemoryBoard(props) {
   }
 
   return (
-    <div className="memoryBoard">
+    <div className="memoryBoard" key={randomNr}>
       <div id="scoreHolder">
         Your Score: {score}
-        <div onClick={() => window.location.reload()}>&#128260;</div>
+        <button className="resetButton" onClick={refresh}>
+          Start a new game with new cards! &#128260;
+        </button>
+        {victory ? <div className="winning">You won!!!</div> : null}
       </div>
       {startGame.length === 0 ? (
         <div className="hint">Add some cards first!</div>
@@ -169,37 +148,3 @@ function MemoryBoard(props) {
 }
 
 export default MemoryBoard;
-
-// <button onClick={getAllCards}>Start Game</button>
-
-//  for (const key in cards) {
-
-// console.log(`${key} : ${cards[key]}`);
-// }
-
-// Object.keys(startGame).forEach((key, i) => {
-//   let randomPos = Math.floor(Math.random() * 8);
-//   startGame[key].style.order = randomPos;
-// });
-
-// cardsTotal.forEach((card) => {
-//   let randomPos = Math.floor(Math.random() * 4);
-//   // card.style.order = randomPos;
-//   //
-//   // card.className = ` .order${randomPos}`;
-//   // console.log(newName);
-//   // card.style.backgroundColor = "red";
-//   setClassNames(randomPos);
-//   console.log(classNames);
-// });
-
-// function shuffle() {
-//   let randomPos = Math.floor(Math.random() * 4);
-//   cardsTotal.forEach((card) => {
-//     card.classList.add("order-" + `${randomPos}`);
-//   });
-//   console.log(cardsTotal);
-// }
-// shuffle();
-
-// const cardsTotal = document.querySelectorAll(".memory-card");

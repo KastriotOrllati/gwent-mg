@@ -18,6 +18,11 @@ function App() {
   // localStorage.setItem("5", "ihuarraquax.mp4");
   // localStorage.setItem("6", "regis.mp4");
 
+  const refresh = (e) => {
+    e.preventDefault();
+    setActive("selectCards");
+  };
+
   console.log(cardback);
   return (
     <div className="App">
@@ -63,29 +68,34 @@ function App() {
         </div>
       </nav>
       {active === "homepage" && (
-        <div className="cardbacks">
-          <div
-            className="hoverDiv"
-            onClick={(e) => setCardback("cardback.png")}
-          >
-            <StaticCard cardback={"cardback.png"} styles={"newStyle"} />
-          </div>
-          <div
-            className="hoverDiv"
-            onClick={(e) => setCardback("cardback1.png")}
-          >
-            <StaticCard cardback={"cardback1.png"} styles={"newStyle"} />
-          </div>
+        <div className="homepage">
+          <div className="infoDiv">Select Your Cardback</div>
+          <div className="cardbacks">
+            <div
+              className="hoverDiv"
+              onClick={(e) => setCardback("cardback.png")}
+            >
+              <StaticCard cardback={"cardback.png"} styles={"newStyle"} />
+            </div>
+            <div
+              className="hoverDiv"
+              onClick={(e) => setCardback("cardback1.png")}
+            >
+              <StaticCard cardback={"cardback1.png"} styles={"newStyle"} />
+            </div>
 
-          <div
-            className="hoverDiv"
-            onClick={(e) => setCardback("cardback2.png")}
-          >
-            <StaticCard cardback={"cardback2.png"} styles={"newStyle"} />
+            <div
+              className="hoverDiv"
+              onClick={(e) => setCardback("cardback2.png")}
+            >
+              <StaticCard cardback={"cardback2.png"} styles={"newStyle"} />
+            </div>
           </div>
         </div>
       )}
-      {active === "playgame" && <MemoryBoard cardback={cardback} />}
+      {active === "playgame" && (
+        <MemoryBoard cardback={cardback} refreshFunk={refresh} />
+      )}
       {active === "selectCards" && <SelectCards />}
     </div>
   );
